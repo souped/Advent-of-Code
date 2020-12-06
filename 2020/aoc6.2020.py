@@ -11,7 +11,7 @@ for l in [l.strip() for l in a]:
     for c in l.replace(" ", ""):
         d[c]+=1
     f = len(l.split(" "))
-    e = [v for c,v in enumerate(d) if v == f]
+    e = [v for c,v in d.items() if v == f]
     if len(e) != 0 and f == max(e): a2+= len(e)
 
 
