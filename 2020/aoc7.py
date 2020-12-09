@@ -17,7 +17,6 @@ def check_bag(bag_color):
 
 print(len(set(check_bag(s))))
 
-def bag_contains(bag_color):
-    return 1 + sum(int(c) * bag_contains(col) for c, col in bags[bag_color])
+def bag_contains(bag_color): return 1 + sum(int(c) * bag_contains(col) for c, col in bags[bag_color])
 
 print(bag_contains(s)-1)

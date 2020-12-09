@@ -1,15 +1,17 @@
 def check_sum(a, n, index):
-    sub = [val for i, val in enumerate(a) if i < index and i >= index - n]
+    sub = a[index-n:index]
     sub2 = set()
+    # proefje = set(abs(i-x) for x in sub) # hier later nog mee door als er geen wiskunde geleerd hoeft te worden
     for i in sub:
         for j in sub:
             if j != i:
                 sub2.add(i+j)
-    
     if len(a) > index and a[index] not in sub2:
         return a[index]
     return check_sum(a,n,index+1)
     
+
+
 def weaknes(a, w):
     for i in range(len(a)-2):
         r = list()
