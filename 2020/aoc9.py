@@ -10,8 +10,6 @@ def check_sum(a, n, index):
         return a[index]
     return check_sum(a,n,index+1)
     
-
-
 def weaknes(a, w):
     for i in range(len(a)-2):
         r = list()
