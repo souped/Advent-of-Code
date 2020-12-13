@@ -22,14 +22,10 @@ def part2(a):
     for di, v in a:
         if di in directions:
             wp += directions[di] * v
-            
         elif di in rotations:
-            wp *= rotations[di] ** (v // 90) # if di == "R" else rotations[di] ** (-v // 90)
-            
+            wp *= rotations[di] ** (v // 90) 
         elif di == "F":
             ship += wp * v
-            
-        print(f"{wp}")
     return round(abs(ship.real) + abs(ship.imag))
 
 def main():
