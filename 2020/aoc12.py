@@ -1,5 +1,3 @@
-from math import cos, sin, pi
-
 directions = dict(zip("NESW", (1j, 1, -1, -1j)))
 rotations = dict(zip("LR", (1j, -1j)))
 
@@ -9,16 +7,35 @@ def part1(a):
     for di, v in a:
         if di in directions:
             location += directions[di] * v
+            continue
         elif di in rotations:
             facing *= rotations[di] ** (v // 90)
+            continue
         elif di == "F":
             location += facing * v
-    print(location)
+            continue
     return round(abs(location.real) + abs(location.imag))
 
+def part2(a):
+    wp = complex(10, 1)
+    ship = complex(0,0)
+    for di, v in a:
+        if di in directions:
+            wp += directions[di] * v
+            continue
+        elif di in rotations:
+            wp *= rotations[di] ** (v // 90)
+            continue
+        elif di == "F":
+            print(f"f{v} {ship}")
+            ship += wp * v
+            print(f"{ship} {wp}")
+            continue
+    return round(abs(ship.real) + abs(ship.imag))
 
 def main():
     with open("O:\\Coding\\Python\\Advent-of-Code\\inputsaoc\\input12.txt") as f: a = [(v[0],int(v[1:])) for v in f.readlines()]
     print(part1(a))
+    print(part2(a))
 main()
 
