@@ -1,4 +1,4 @@
-directions = dict(zip("NESW", (1j, 1, -1, -1j)))
+directions = dict(zip("NESW", (1j, 1, -1j, -1)))
 rotations = dict(zip("LR", (1j, -1j)))
 
 def part1(a):
@@ -22,15 +22,14 @@ def part2(a):
     for di, v in a:
         if di in directions:
             wp += directions[di] * v
-            continue
+            
         elif di in rotations:
-            wp *= rotations[di] ** (v // 90)
-            continue
+            wp *= rotations[di] ** (v // 90) # if di == "R" else rotations[di] ** (-v // 90)
+            
         elif di == "F":
-            print(f"f{v} {ship}")
             ship += wp * v
-            print(f"{ship} {wp}")
-            continue
+            
+        print(f"{wp}")
     return round(abs(ship.real) + abs(ship.imag))
 
 def main():
